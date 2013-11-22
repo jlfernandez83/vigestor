@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update] #Este comando simplemente indica que el método signed_in_user se ejecuta antes que las acciones, en este caso, antes que edit y update
+  before_action :signed_in_user, only: [:index, :edit, :update, :destroy] #Este comando simplemente indica que el método signed_in_user se ejecuta antes que las acciones, en este caso, antes que edit y update
   before_action :correct_user,   only: [:edit, :update]
+  before_action :admin_user,     only: :destroy
   
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
 
   def show
@@ -27,6 +28,12 @@ class UsersController < ApplicationController
 
   def edit
   end
+  
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted."
+    redirect_to users_url
+  end  
 
   def update
     if @user.update_attributes(user_params)
@@ -55,5 +62,8 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
+    end
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end
