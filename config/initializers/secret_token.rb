@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-SampleApp::Application.config.secret_key_base = '694f7b67757e7cdeb07e888f542c3ade7b7d40eb99665256a4acc85fea8053a5c7909fd3e0b339d58e1d98c6dc6fac63ae6d426c770ec0237b44d5cf2c87efe4'
+Vigestor::Application.config.secret_key_base = '694f7b67757e7cdeb07e888f542c3ade7b7d40eb99665256a4acc85fea8053a5c7909fd3e0b339d58e1d98c6dc6fac63ae6d426c770ec0237b44d5cf2c87efe4'
