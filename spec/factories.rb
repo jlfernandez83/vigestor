@@ -14,4 +14,10 @@ FactoryGirl.define do
     content "Lorem ipsum"
     user
   end
+
+  factory :pagina do
+    contenido "Lorem ipsum"
+    tipo "prototipo inicial"
+    sequence(:url) { |n| "www.vitutor.com/ruta#{n}"}
+  end
 end

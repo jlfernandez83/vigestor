@@ -20,5 +20,14 @@ namespace :db do
       content = Faker::Lorem.sentence(5)
       users.each { |user| user.microposts.create!(content: content) }
     end
+
+    50.times do |n|
+      url = "www.vitutor.com/ruta#{n}"
+      content = Faker::Lorem.sentence(10)
+      tipo = "prototipo inicial"
+      Pagina.create!(tipo: tipo,
+                     url: url,
+                     contenido: content)
+    end 
   end
 end
