@@ -1,3 +1,8 @@
 <li>
   <%= link_to pagina.url , pagina %>
+  &nbsp;&nbsp;&nbsp;<%= link_to "x Borrar", pagina, method: :delete,
+                                     data: { confirm: "Estás seguro?" },
+                                     title: pagina.url %>
+  &nbsp;&nbsp;&nbsp;<%= link_to "Editar", edit_pagina_path(pagina),
+                                     title: "Editar "+pagina.url %>
 </li>

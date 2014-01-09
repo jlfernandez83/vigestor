@@ -1,0 +1,2 @@
+class ContentFieldsController < ApplicationController
+end

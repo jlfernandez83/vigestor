@@ -1,18 +1,22 @@
-<% provide(:title, "Editar Página") %>
-<h1>Editar página</h1>
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@pagina) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      <div class="field">
-        <%= f.text_area :contenido, placeholder: "Contenido para el primer campo de contenido" %>
-      </div>
-        <%= f.submit "Post", class: "btn btn-large btn-primary" %>
-    <% end %>  
-  </div>
-</div>
+<% provide(:title,'Editar página '+@pagina.url) %>
+
+<h1>Editar <%= @pagina.url %></h1>
+<%= form_for @pagina, html: {class: "nifty_form"} do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+
+  <%= fields_for @content_field do |c_f| %>
+    <%= c_f.label :title %>
+    <%= c_f.text_area :title %>
+    <%= c_f.label :contenido %>
+    <%= c_f.text_area :contenido, size: "60x12", class: "ckeditor" %>
+  <% end %>
+
+  <%= f.submit "Actualizar" %>
+<% end %>
 <script type="text/javascript">
   // Replace the <textarea id="editor1"> with a CKEditor
   // instance, using default configuration.
-  CKEDITOR.replace( 'pagina_contenido' );
+  CKEDITOR.replace( 'content_field_contenido' );
 </script>

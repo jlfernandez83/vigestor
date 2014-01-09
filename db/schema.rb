@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131219085339) do
+ActiveRecord::Schema.define(version: 20131227084924) do
 
-  create_table "campo_contenidos", force: true do |t|
+  create_table "content_fields", force: true do |t|
     t.string   "contenido"
-    t.string   "titulo"
-    t.integer  "pagina_id"
+    t.string   "pagina_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
   end
 
   create_table "microposts", force: true do |t|
